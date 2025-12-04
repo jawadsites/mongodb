@@ -8,7 +8,7 @@ import { connectDB } from "@/app/config/db";
 
 export const POST = async (
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) => {
   try {
     await connectDB();
@@ -17,7 +17,7 @@ export const POST = async (
     if (!user)
       return NextResponse.json({ error: "غير مصرح بك" }, { status: 401 });
 
-    const regionId = params.id;
+    const { id: regionId } = await params;
     if (!regionId || !mongoose.Types.ObjectId.isValid(regionId)) {
       return NextResponse.json(
         { error: "معرف المنطقة غير صالح" },
@@ -79,7 +79,7 @@ export const POST = async (
 
 export const GET = async (
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) => {
   try {
     await connectDB();
@@ -88,7 +88,7 @@ export const GET = async (
     if (!user) {
       return NextResponse.json({ error: "غير مصرح بك" }, { status: 401 });
     }
-    const regionId = params.id;
+    const { id: regionId } = await params;
     if (!regionId || !mongoose.Types.ObjectId.isValid(regionId)) {
       return NextResponse.json(
         { error: "معرف المنطقة غير صالح" },
@@ -113,7 +113,7 @@ export const GET = async (
 
 export const PUT = async (
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) => {
   try {
     await connectDB();
@@ -126,7 +126,7 @@ export const PUT = async (
       );
     }
 
-    const regionInfoId = params.id;
+    const { id: regionInfoId } = await params;
     if (!regionInfoId || !mongoose.Types.ObjectId.isValid(regionInfoId)) {
       return NextResponse.json(
         { error: "معرف السجل غير صالح" },
@@ -186,7 +186,7 @@ export const PUT = async (
 
 export const DELETE = async (
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) => {
   try {
     await connectDB();
@@ -199,7 +199,7 @@ export const DELETE = async (
       );
     }
 
-    const regionInfoId = params.id;
+    const { id: regionInfoId } = await params;
     if (!regionInfoId || !mongoose.Types.ObjectId.isValid(regionInfoId)) {
       return NextResponse.json(
         { error: "معرف السجل غير صالح" },

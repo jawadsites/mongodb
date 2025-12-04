@@ -5,19 +5,18 @@ import Region from "@/app/models/Region";
 import User from "@/app/models/User";
 import { NextRequest, NextResponse } from "next/server";
 
-connectDB();
-
 export const GET = async (
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) => {
   try {
+    await connectDB();
     const user = await isAuthenticate(request);
     if (!user) {
       return NextResponse.json({ error: "غير مصرح بك" });
     }
 
-    const id = params.id;
+    const { id } = await params;
 
     if (!id) {
       return NextResponse.json({ error: "معرف  منطقة مطلوب" });
@@ -36,9 +35,10 @@ export const GET = async (
 
 export const PUT = async (
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) => {
   try {
+    await connectDB();
     const adminCheck = await isAdmin(request);
     if (adminCheck.error) {
       return NextResponse.json(
@@ -46,7 +46,7 @@ export const PUT = async (
         { status: adminCheck.status }
       );
     }
-    const id = params.id;
+    const { id } = await params;
     if (!id) {
       return NextResponse.json({ error: "معرف  منطقة مطلوب" });
     }
@@ -77,9 +77,10 @@ const region = await Region.findOneAndUpdate(
 
 export const DELETE = async (
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) => {
   try {
+    await connectDB();
     const adminCheck = await isAdmin(request);
     if (adminCheck.error) {
       return NextResponse.json(
@@ -88,7 +89,7 @@ export const DELETE = async (
       );
     }
 
-    const id =  params.id;
+    const { id } = await params;
     if (!id) {
       return NextResponse.json({ error: "معرف  منطقة مطلوب" });
     }

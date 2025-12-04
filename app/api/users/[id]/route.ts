@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async (
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) => {
   try {
     await connectDB();
@@ -15,7 +15,7 @@ export const GET = async (
       return NextResponse.json({ error: "غير مصرح بك" }, { status: 401 });
     }
 
-    const id = params.id;
+    const { id } = await params;
     if (!id) {
       return NextResponse.json({ error: "المعرف مستخدم مطلوب" }, { status: 400 });
     }
@@ -35,7 +35,7 @@ export const GET = async (
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB();
@@ -49,7 +49,7 @@ export async function DELETE(
       );
     }
 
-    const id = params.id;
+    const { id } = await params;
 
     if (!id) {
       return NextResponse.json(
