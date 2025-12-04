@@ -1,0 +1,241 @@
+/* ---------- WRAPPER ---------- */
+.profile-wrapper {
+  padding: 40px 20px;
+  background: #f5f7fa;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-wrapper .container {
+  width: 100%;
+  max-width: 1100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+
+/* ---------- CARDS ---------- */
+.avatar-card,
+.bio-card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.avatar-card:hover,
+.bio-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+
+/* ---------- BIO SECTION ---------- */
+.bio-card h3 {
+  margin-bottom: 15px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #111;
+}
+
+.bio-card p {
+  color: #444;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+/* Buttons */
+.bio-card .edit-btn,
+.bio-card .save-btn,
+.bio-card .cancel-btn {
+  padding: 8px 22px;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  margin: 10px 5px;
+  transition: 0.25s ease;
+}
+
+.avatar-card , .bio-card {
+  height: 400px;
+}
+
+/* Individual Button Styles */
+.edit-btn { background: #006aff; color: white; }
+.edit-btn:hover { background: #0054ca; }
+
+.save-btn { background: #10b981; color: white; }
+.save-btn:hover { background: #0fb072; }
+
+.cancel-btn { background: #e40000; color: white; }
+.cancel-btn:hover { background: #ff0000; }
+
+/* Textarea */
+.bio-card .bio-input {
+  width: 95%;
+  border: 2px solid #006aff;
+  border-radius: 10px;
+  padding: 12px;
+  min-height: 120px;
+  font-size: 16px;
+  outline: none;
+  transition: 0.2s ease-in-out;
+}
+
+.bio-card .bio-input:focus {
+  border-color: #0054ca;
+}
+
+
+/* ---------- AVATAR CARD ---------- */
+.avatar-card {
+  text-align: center;
+}
+
+.avatar-card .avatar-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.avatar-card .avatar-box img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 4px solid #006aff;
+  object-fit: cover;
+  margin-bottom: 12px;
+  transition: 0.25s;
+}
+
+.avatar-card .avatar-box img:hover {
+  border-color: #0054ca;
+  transform: scale(1.03);
+}
+
+/* Upload Button */
+.avatar-card input[type="file"] {
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+/* Info Box */
+.info-box {
+  margin-top: 20px;
+}
+
+.info-box h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #111;
+}
+
+.info-box p {
+  color: #666;
+  font-size: 15px;
+}
+
+/* ---------- PASSWORD CARD ---------- */
+.password-card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 300px;
+}
+
+.password-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.password-card h3 {
+  margin-bottom: 15px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #111;
+}
+
+/* Inputs */
+.password-card input {
+  margin-bottom: 12px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 2px solid #006aff;
+  outline: none;
+  font-size: 16px;
+  transition: 0.2s ease-in-out;
+}
+
+.password-card input:focus {
+  border-color: #0054ca;
+}
+
+/* Button */
+.password-card button {
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  background: #006aff;
+  color: white;
+  transition: 0.25s ease;
+}
+
+.password-card button:hover {
+  background: #0054ca;
+}
+
+.password-card button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 880px) {
+  .profile-wrapper .container {
+    grid-template-columns: 1fr;
+  }
+
+  .avatar-card,
+  .bio-card,
+  .password-card {
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .avatar-card img {
+    width: 110px;
+    height: 110px;
+  }
+
+  .bio-card h3,
+  .password-card h3 {
+    font-size: 18px;
+  }
+
+  .bio-card .bio-input,
+  .password-card input {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .bio-card .edit-btn,
+  .bio-card .save-btn,
+  .bio-card .cancel-btn,
+  .password-card button {
+    padding: 8px 18px;
+    font-size: 14px;
+  }
+}

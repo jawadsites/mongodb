@@ -1,0 +1,233 @@
+/* -------------------------
+   إعدادات عامة وعصرية
+-------------------------- */
+.region-page {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 20px;
+  font-family: "Inter", sans-serif;
+  color: #1e293b;
+  background-color: #f9fafb;
+}
+
+/* العنوان */
+.region-page h1 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #0f172a;
+  text-align: center;
+}
+
+/* -------------------------
+   نموذج الإدخال (FORM)
+-------------------------- */
+.region-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 15px;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0px 5px 15px rgba(0,0,0,0.05);
+  margin-bottom: 25px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.region-form input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  transition: 0.2s ease-in-out;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.region-form input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0px 0px 6px rgba(59,130,246,0.4);
+  outline: none;
+}
+
+.region-form .form-buttons {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.region-form button {
+  padding: 12px 24px;
+  background: #2563eb;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.region-form button:hover {
+  background: #1e40af;
+}
+
+.region-form .cancel-btn {
+  background: #6b7280;
+}
+
+.region-form .cancel-btn:hover {
+  background: #4b5563;
+}
+
+/* -------------------------
+   جدول السجلات (TABLE)
+-------------------------- */
+
+/* حاوية للسكرول */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0px 5px 15px rgba(0,0,0,0.05);
+}
+
+/* الجدول */
+.region-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1100px;
+  transition: all 0.3s ease;
+}
+
+/* رأس الجدول */
+.region-table th {
+  background: #f8fafc;
+  padding: 12px;
+  font-weight: 600;
+  border-bottom: 2px solid #e2e8f0;
+  position: sticky;
+  top: 0;
+  color: #1e293b;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* الخلايا */
+.region-table td {
+  padding: 12px;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* صفوف متبادلة اللون */
+.region-table tbody tr:nth-child(even) {
+  background: #f8fafc;
+}
+
+/* تأثير عند المرور على الصف */
+.region-table tbody tr:hover {
+  background: #e0f2fe;
+  transition: 0.3s;
+}
+
+/* -------------------------
+   أزرار actions
+-------------------------- */
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.action-buttons .edit-btn,
+.action-buttons .delete-btn {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  transition: 0.2s;
+  cursor: pointer;
+  border: none;
+}
+
+.action-buttons .edit-btn {
+  background: #14b8a6;
+  color: white;
+}
+
+.action-buttons .edit-btn:hover {
+  background: #0d9488;
+}
+
+.action-buttons .delete-btn {
+  background: #ef4444;
+  color: white;
+}
+
+.action-buttons .delete-btn:hover {
+  background: #b91c1c;
+}
+
+/* Loading and empty states */
+.loading-text,
+.no-records {
+  text-align: center;
+  padding: 40px;
+  font-size: 16px;
+  color: #64748b;
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+}
+
+@media (max-width: 1024px) {
+  .region-form {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+  .region-table {
+    min-width: 900px;
+  }
+}
+
+@media (max-width: 768px) {
+  .region-page h1 {
+    font-size: 20px;
+  }
+  .region-form {
+    grid-template-columns: 1fr 1fr;
+  }
+  .region-table {
+    min-width: 800px;
+  }
+}
+
+/* شاشات موبايل */
+@media (max-width: 480px) {
+  .region-form {
+    grid-template-columns: 1fr;
+    padding: 15px;
+  }
+
+  .region-form input {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .region-form button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .region-table {
+    min-width: 700px;
+  }
+
+  .region-table th, .region-table td {
+    padding: 8px;
+    font-size: 12px;
+  }
+}
